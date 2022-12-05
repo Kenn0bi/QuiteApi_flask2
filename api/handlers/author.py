@@ -39,6 +39,6 @@ def edit_author(author_id):
     return author.to_dict(), 200
 
 
-@app.route('/authors/<int:author_id>', methods=["PUT"])
+@app.route('/authors/<int:author_id>', methods=["DELETE"])
 def delete_author(quote_id):
     raise NotImplemented("Метод не реализован")
