@@ -1,4 +1,4 @@
-from api import app, db, request
+from api import app, db, request, multi_auth
 from api.models.author import AuthorModel
 from api.models.quote import QuoteModel
 from api.schemas.author import author_schema, authors_schema
@@ -19,6 +19,7 @@ def get_author_by_id(author_id):
     return author_schema.dump(author), 200
 
 @app.route('/authors', methods=["POST"])
+@multi_auth.login_required(role='admin')
 def create_author():
     author_data = request.json
     author = AuthorModel(author_data["name"], author_data["surname"])
